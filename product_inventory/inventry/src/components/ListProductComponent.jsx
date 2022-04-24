@@ -37,11 +37,14 @@ class ListProductComponent extends React.Component {
 
 
     render() {
+        const mystyle = {
+            width: "130px"
+          };
         return (
-            <div>                
+            <div>               
                 <h2 className="text-center">Inventry</h2>
                 <div className='row'>
-                    <button className='btn btn-primary' onClick={this.addProduct}>Add Product</button>
+                    <button style = {{width: "130px"}} className='btn btn-primary' onClick={this.addProduct}>Add Product</button>
                 </div>
                 <div className='row'>
                     <table className='table table-stroped table-bordered'>
