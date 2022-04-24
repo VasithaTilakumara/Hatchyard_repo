@@ -2,6 +2,7 @@ package com.Inventory.ProductInventory.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,13 @@ public class ProductInventryService {
 		List<Inventry> product = new ArrayList<>();
 		inventryRepo.findAll().forEach(product::add);
 		return product;
+	}
+	
+	public Inventry getProduct(Integer id) {
+		Optional<Inventry> product =  inventryRepo.findById(id);
+		Inventry inventry = product.get();
+		return inventry;
+		
 	}
 
 	public void addProduct(Inventry inventry) {

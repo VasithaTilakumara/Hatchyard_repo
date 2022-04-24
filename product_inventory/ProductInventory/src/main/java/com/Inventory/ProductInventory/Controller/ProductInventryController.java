@@ -20,29 +20,37 @@ public class ProductInventryController {
 	@Autowired
 	private ProductInventryService productInventryService;
 	
-	@CrossOrigin (origins = "http://localhost:3000/")
+	
 	@RequestMapping("/products")
 	public List<Inventry> getAllInventry()
 	{
 		return productInventryService.getAllInventry();
 	}
 	
-	@CrossOrigin (origins = "http://localhost:3000/")
-	@RequestMapping(method = RequestMethod.POST, value="/products")
+	
+	@RequestMapping("/products/{id}")
+	public Inventry getProduct(@PathVariable Integer id)
+	{
+		Inventry product = (Inventry) productInventryService.getProduct(id);
+		return product;
+	}
+	
+	
+	@RequestMapping(method = RequestMethod.POST, value="/add-products")
 	public void addProduct(@RequestBody Inventry product)
 	{
 		productInventryService.addProduct(product);
 	}
 	
-	@CrossOrigin (origins = "http://localhost:3000/")
-	@RequestMapping(method = RequestMethod.PUT, value="/product/{id}")
+	
+	@RequestMapping(method = RequestMethod.PUT, value="/products/{id}")
 	public void updateProduct(@PathVariable Integer id,@RequestBody Inventry product)
 	{
 		productInventryService.updateProduct(id,product);
 	}
 	
-	@CrossOrigin (origins = "http://localhost:3000/")
-	@RequestMapping(method = RequestMethod.DELETE, value="/product/{id}")
+	
+	@RequestMapping(method = RequestMethod.DELETE, value="/products/{id}")
 	public void DeleteProduct(@PathVariable Integer id)
 	{
 		productInventryService.deleteProduct(id);
